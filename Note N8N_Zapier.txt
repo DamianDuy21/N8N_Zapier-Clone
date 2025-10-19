@@ -1,0 +1,6 @@
+1. Bình thường dự án mình hay dùng mongodb là database, ở đây dùng postgres thông qua giao diện Noen, nó giống như dùng mongodb bản web ấy
+-> postgres thay cho mongodb
+
+2. Backend mình hay dùng express thì ở đây dùng prisma để thao tác với database
+3. Về giao thức truyền thông giữa Be và Fe, bình thường mình dùng Restful API, bây giờ dùng tRPC. Đây là 1 data access layer giúp bảo mật, an toàn hơn. 
+-> trpc sẽ có .query, .mutation, ... để thay cho post, get, put, ...
