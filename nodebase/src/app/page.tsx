@@ -4,16 +4,25 @@ import { Button } from "@/components/ui/button";
 import LogoutButton from "@/features/auth/components/LogoutButton";
 import { useTRPC } from "@/trpc/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 const Page = () => {
   const trpc = useTRPC();
   const queryClient = useQueryClient();
   const { data } = useQuery(trpc.getWorkflows.queryOptions());
 
+  const testAI = useMutation(
+    trpc.testAI.mutationOptions({
+      onSuccess: () => {
+        toast.success("AI execution started!");
+      },
+    })
+  );
+
   const createWorkflow = useMutation(
     trpc.createWorkflow.mutationOptions({
       onSuccess: () => {
-        queryClient.invalidateQueries(trpc.getWorkflows.queryOptions());
+        toast.success("Workflow creation started!");
       },
     })
   );
@@ -26,6 +35,9 @@ const Page = () => {
         onClick={() => createWorkflow.mutate()}
       >
         Create Workflow
+      </Button>
+      <Button disabled={testAI.isPending} onClick={() => testAI.mutate()}>
+        Test AI
       </Button>
       <LogoutButton />
     </div>
