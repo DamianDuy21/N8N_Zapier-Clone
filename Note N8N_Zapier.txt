@@ -4,3 +4,7 @@
 2. Backend mình hay dùng express thì ở đây dùng prisma để thao tác với database
 3. Về giao thức truyền thông giữa Be và Fe, bình thường mình dùng Restful API, bây giờ dùng tRPC. Đây là 1 data access layer giúp bảo mật, an toàn hơn. 
 -> trpc sẽ có .query, .mutation, ... để thay cho post, get, put, ...
+
+4. Authentication dùng BetterAuth
+5. Theme cho shadcn dùng tweakcn, Logo lấy ở https://logoipsum.com/
+6. Background jobs dùng https://www.inngest.com/?utm_source=youtube&utm_medium=video&utm_campaign=cwa-3&utm_term=next.js
