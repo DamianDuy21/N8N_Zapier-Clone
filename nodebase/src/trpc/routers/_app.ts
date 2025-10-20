@@ -8,7 +8,8 @@ export const appRouter = createTRPCRouter({
   }),
   testAI: protectedProcedure.mutation(async () => {
     await inngest.send({
-      name: " execute/ai",
+      name: "execute/ai",
+      data: {},
     });
     return { success: true, message: "AI execution initiated." };
   }),

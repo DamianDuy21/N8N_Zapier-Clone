@@ -29,7 +29,7 @@ export const executeAI = inngest.createFunction(
       {
         system:
           "You are a helpful assistant that helps users generate text using Google Gemini models.",
-        model: openai("gpt-4"),
+        model: openai("gpt-3.5-turbo"),
         prompt: "What is 2+2?",
       }
     );
