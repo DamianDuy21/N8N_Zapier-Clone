@@ -1,12 +1,18 @@
 import { inngest } from "@/inngest/client";
 import prisma from "@/lib/db";
 import { createTRPCRouter, protectedProcedure } from "../init";
+import { TRPCError } from "@trpc/server";
 
 export const appRouter = createTRPCRouter({
   getUsers: protectedProcedure.query(({ ctx }) => {
     return prisma.user.findMany({ where: { id: ctx.auth.user.id } });
   }),
   testAI: protectedProcedure.mutation(async () => {
+    // throw new TRPCError({
+    //   code: "FORBIDDEN",
+    //   message: "This is a test error from testAI mutation.",
+    // });
+
     await inngest.send({
       name: "execute/ai",
       data: {},

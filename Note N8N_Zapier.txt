@@ -8,3 +8,4 @@
 4. Authentication dùng BetterAuth
 5. Theme cho shadcn dùng tweakcn, Logo lấy ở https://logoipsum.com/
 6. Background jobs dùng https://www.inngest.com/?utm_source=youtube&utm_medium=video&utm_campaign=cwa-3&utm_term=next.js
+7. Error tracking dùng Sentry, có logs và session replays, cái session replays cho phép xem được là lỗi này do người dùng bấm vào UI nào, nghĩa là không chỉ logs ở Be mà còn xem được nguyên nhân từ Fe
