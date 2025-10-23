@@ -11,3 +11,4 @@
 7. Error tracking dùng Sentry, có logs và session replays, cái session replays cho phép xem được là lỗi này do người dùng bấm vào UI nào, nghĩa là không chỉ logs ở Be mà còn xem được nguyên nhân từ Fe
 8. Sidebar Layout
 9. Payments Setup dùng Polar
+12. Xử lí param, query ở phía server bằng nuqs
