@@ -67,7 +67,7 @@ export const WorkflowsHeader = ({ disable }: { disable?: boolean }) => {
       onError: (error) => {
         // todo: open upgrade modal
         handleError(error);
-        console.error("Failed to create workflow");
+        console.error("Failed to create workflow", error);
       },
     });
   };
