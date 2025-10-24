@@ -11,4 +11,5 @@
 7. Error tracking dùng Sentry, có logs và session replays, cái session replays cho phép xem được là lỗi này do người dùng bấm vào UI nào, nghĩa là không chỉ logs ở Be mà còn xem được nguyên nhân từ Fe
 8. Sidebar Layout
 9. Payments Setup dùng Polar
-12. Xử lí param, query ở phía server bằng nuqs
+12. Xử lí param, query ở phía server bằng nuqs, tạo tên ngẫu nhiên bằng random-word-slugs
+13. date-fns có thể xử lí khoảng cách thời gian, như kiểu 5 phút trước, 1 ngày trước, ... có cả song ngữ nhé
