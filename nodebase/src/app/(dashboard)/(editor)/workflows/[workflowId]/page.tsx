@@ -1,4 +1,14 @@
+import {
+  Editor,
+  EditorError,
+  EditorLoading,
+} from "@/features/editor/components/editor";
+import EditorHeader from "@/features/editor/components/editor-header";
+import { prefetchWorkflow } from "@/features/workflows/server/prefetch";
 import { requireAuth } from "@/lib/auth-utils";
+import { HydrateClient } from "@/trpc/server";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 interface EditorWorkflowIdPageProps {
   params: Promise<{
@@ -10,7 +20,22 @@ const EditorWorkflowIdPage = async ({ params }: EditorWorkflowIdPageProps) => {
   await requireAuth();
   const { workflowId } = await params;
 
-  return <div>Editor Workflow ID Page: {workflowId}</div>;
+  prefetchWorkflow(workflowId);
+  return (
+    <>
+      <HydrateClient>
+        <ErrorBoundary fallback={<EditorError />}>
+          <Suspense fallback={<EditorLoading />}>
+            {/* Your workflow components go here */}
+            <EditorHeader workflowId={workflowId} />
+            <main className="flex-1">
+              <Editor workflowId={workflowId} />
+            </main>
+          </Suspense>
+        </ErrorBoundary>
+      </HydrateClient>
+    </>
+  );
 };
 
 export default EditorWorkflowIdPage;
