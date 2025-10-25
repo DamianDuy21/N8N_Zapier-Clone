@@ -78,6 +78,29 @@ export const useUpdateWorkflowName = () => {
   );
 };
 
+export const useUpdateWorkflow = () => {
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    trpc.workflows.update.mutationOptions({
+      onSuccess: async (data) => {
+        toast.success(`Workflow ${data.name} saved successfully!`);
+
+        await queryClient.invalidateQueries(
+          trpc.workflows.getMany.queryOptions({})
+        );
+        await queryClient.invalidateQueries(
+          trpc.workflows.getOne.queryOptions({ id: data.id })
+        );
+      },
+      onError: () => {
+        toast.error("Failed to save workflow. Please try again.");
+      },
+    })
+  );
+};
+
 export const useSuspendedWorkflow = (id: string) => {
   const trpc = useTRPC();
   return useSuspenseQuery(trpc.workflows.getOne.queryOptions({ id }));
