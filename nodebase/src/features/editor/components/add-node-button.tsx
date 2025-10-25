@@ -3,27 +3,26 @@
 import { PlusIcon } from "lucide-react";
 import { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { NodeSelector } from "@/components/node-selector";
 
 export const AddNodeButton = memo(() => {
-  const [isAdding, setIsAdding] = useState(false);
+  const [selectorOpen, setSelectorOpen] = useState(false);
   const handleAddNode = () => {
-    setIsAdding(true);
-    // Simulate an async operation
-    setTimeout(() => {
-      setIsAdding(false);
-    }, 2000);
+    setSelectorOpen(true);
   };
 
   return (
-    <Button
-      onClick={handleAddNode}
-      disabled={isAdding}
-      size="icon"
-      variant="outline"
-      className="bg-background"
-    >
-      <PlusIcon />
-    </Button>
+    <NodeSelector open={selectorOpen} onOpenChange={setSelectorOpen}>
+      <Button
+        onClick={handleAddNode}
+        disabled={selectorOpen}
+        size="icon"
+        variant="outline"
+        className="bg-background"
+      >
+        <PlusIcon />
+      </Button>
+    </NodeSelector>
   );
 });
 AddNodeButton.displayName = "AddNodeButton";
